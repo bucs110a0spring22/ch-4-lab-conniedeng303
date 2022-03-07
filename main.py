@@ -17,7 +17,7 @@ def drawSineCurve(dart=None):
 
 def drawCosineCurve(dart=None):
   dart.penup()
-  dart.goto(-360,0)
+  dart.goto(-360,1)
   dart.pendown()
   for x in range (-360,361):
     y=math.cos(math.radians(x))
@@ -35,15 +35,21 @@ def setupWindow(wn=None):
   wn.setworldcoordinates(-360,-1,360,1)
   wn.bgcolor("blue")
 
-# def setupAxis(dart=None):
-#   for x in range(4):
-#     dart.penup()
-#     dart.goto(0,0)
-#     dart.right(90)
-#     dart.pendown()
-#     dart.forward(1)
-    
- 
+def setupAxis(dart=None):
+    dart.penup()
+    dart.goto(0,0)
+    dart.pendown()
+    dart.forward(360)
+    dart.goto(0,0)
+    dart.right(90)
+    dart.forward(1)
+    dart.goto(0,0)
+    dart.right(90)
+    dart.forward(360)
+    dart.goto(0,0)
+    dart.right(90)
+    dart.forward(1)
+
 ##########  Do Not Alter Any Code Past Here ########
 def main():
     #Part A
@@ -52,11 +58,10 @@ def main():
     dart = turtle.Turtle()
     dart.speed(0)
     drawSineCurve(dart)
-    
 
     #Part B
     setupWindow(wn)
-    # setupAxis(dart)
+    setupAxis(dart)
     dart.speed(0)
     drawSineCurve(dart)
     drawCosineCurve(dart)
