@@ -8,20 +8,42 @@ import math
 # and should review how they work or ask for help
 
 def drawSineCurve(dart=None):
-  for x in range (-361,360):
+  dart.penup()
+  dart.goto(-360,0)
+  dart.pendown()
+  for x in range (-360,361):
     y=math.sin(math.radians(x))
     dart.goto(x,y)
 
 def drawCosineCurve(dart=None):
-  for x in range (-361,360):
+  dart.penup()
+  dart.goto(-360,0)
+  dart.pendown()
+  for x in range (-360,361):
     y=math.cos(math.radians(x))
     dart.goto(x,y)
 
 def drawTangentCurve(dart=None):
-  for x in range (-361,360):
+  dart.penup()
+  dart.goto(-360,0)
+  dart.pendown()
+  for x in range (-360,361):
     y=math.tan(math.radians(x))
     dart.goto(x,y)
 
+def setupWindow(wn=None):
+  wn.setworldcoordinates(-360,-1,360,1)
+  wn.bgcolor("blue")
+
+# def setupAxis(dart=None):
+#   for x in range(4):
+#     dart.penup()
+#     dart.goto(0,0)
+#     dart.right(90)
+#     dart.pendown()
+#     dart.forward(1)
+    
+ 
 ##########  Do Not Alter Any Code Past Here ########
 def main():
     #Part A
@@ -34,10 +56,11 @@ def main():
 
     #Part B
     setupWindow(wn)
-    setupAxis(dart)
+    # setupAxis(dart)
     dart.speed(0)
     drawSineCurve(dart)
     drawCosineCurve(dart)
     drawTangentCurve(dart)
     wn.exitonclick()
 
+main()
