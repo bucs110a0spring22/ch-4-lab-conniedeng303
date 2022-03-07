@@ -12,6 +12,16 @@ def drawSineCurve(dart=None):
     y=math.sin(math.radians(x))
     dart.goto(x,y)
 
+def drawCosineCurve(dart=None):
+  for x in range (-361,360):
+    y=math.cos(math.radians(x))
+    dart.goto(x,y)
+
+def drawTangentCurve(dart=None):
+  for x in range (-361,360):
+    y=math.tan(math.radians(x))
+    dart.goto(x,y)
+
 ##########  Do Not Alter Any Code Past Here ########
 def main():
     #Part A
@@ -20,6 +30,7 @@ def main():
     dart = turtle.Turtle()
     dart.speed(0)
     drawSineCurve(dart)
+    
 
     #Part B
     setupWindow(wn)
@@ -29,4 +40,4 @@ def main():
     drawCosineCurve(dart)
     drawTangentCurve(dart)
     wn.exitonclick()
-main()
+
