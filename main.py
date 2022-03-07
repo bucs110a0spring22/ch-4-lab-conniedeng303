@@ -1,4 +1,5 @@
 import turtle
+import math
 
 ########### Your Code here ##############
 # You should only have functions here
@@ -6,12 +7,10 @@ import turtle
 # then you do not fully understand functions
 # and should review how they work or ask for help
 
-
-
-
-
-
-
+def drawSineCurve(dart=None):
+  for x in range (-361,360):
+    y=math.sin(math.radians(x))
+    dart.goto(x,y)
 
 ##########  Do Not Alter Any Code Past Here ########
 def main():
