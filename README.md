@@ -19,7 +19,7 @@ Grace days remaining: < 5 >/5
  < None. >
 
 ## REFERENCES:
-  I used this youtube video to figure out how to draw the sin graph. (https://www.youtube.com/watch?v=IX-V58JNdrI) 
+  I used this youtube video to figure out how the sin graphed worked. (https://www.youtube.com/watch?v=IX-V58JNdrI) 
 
 ## MISCELLANEOUS COMMENTS:
  < None. >
