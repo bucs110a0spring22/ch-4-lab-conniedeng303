@@ -36,7 +36,6 @@ def setupWindow(wn=None):
   wn.bgcolor("blue")
 
 def setupAxis(dart=None):
-    dart.penup()
     dart.goto(0,0)
     dart.pendown()
     dart.forward(360)
