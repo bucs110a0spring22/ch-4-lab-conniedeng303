@@ -9,7 +9,7 @@ import math
 
 def drawSineCurve(dart=None,startofgraph_x=0,startofgraph_y=0):
   dart.penup()
-  dart.goto(startofgraph_x,startofgraph_y=0)
+  dart.goto(startofgraph_x,startofgraph_y)
   dart.pendown()
   for x in range (-360,361):
     y=math.sin(math.radians(x))
@@ -36,18 +36,30 @@ def setupWindow(wn=None):
   wn.bgcolor("green")
 
 def setupAxis(dart=None):
+  dart.setheading(90)
+  for i in range(4):
     dart.goto(0,0)
     dart.pendown()
     dart.forward(360)
+    dart.right(180)
     dart.goto(0,0)
-    dart.right(90)
     dart.forward(1)
-    dart.goto(0,0)
     dart.right(90)
-    dart.forward(360)
-    dart.goto(0,0)
-    dart.right(90)
-    dart.forward(1)
+
+
+    # dart.right(180)
+    # dart.goto(0,0)
+    # dart.pendown()
+    # dart.forward(360)
+    # dart.goto(0,0)
+    # dart.right(90)
+    # dart.forward(1)
+    # dart.goto(0,0)
+    # dart.right(90)
+    # dart.forward(360)
+    # dart.goto(0,0)
+    # dart.right(90)
+    # dart.forward(1)
 
 
 #Additional Functions:
@@ -61,19 +73,20 @@ def setupAxis(dart=None):
 #FEATURES
 #4 quadrants, change color, if turtle ends up on the right color then it traces a heart  
 
-def RedLightGreenLight(dart=None):
-  question = str(input("Start game? Type Yes or No?"))
-  if question == "yes":
-    dart.clear()
-    x_value = int(input("Pick your x value"))
-    y_value = int(input("Pick your x value"))
-    dart.goto(x_value,y_value)
+# def RedLightGreenLight(dart=None,orange=None):
+#   question = str(input("Start game? Type Yes or No?"))
+#   if question == "yes":
+#     dart.clear()
+#     x_value = int(input("Pick your x value"))
+#     y_value = int(input("Pick your x value"))
+#     dart.goto(x_value,y_value)
+#     orange_x_value = random.uniform(-1,1)
+
+#     if 
     
-    
-    
-    print("Done")
-  else:
-    quit()
+#     print("Done")
+#   else:
+#     quit()
 
 
     
@@ -84,17 +97,19 @@ def main():
     wn = turtle.Screen()
     wn.tracer(5)
     dart = turtle.Turtle()
+    # orange = turtle.Turtle()
+    # orange = speed(0)
     dart.speed(0)
-    drawSineCurve(dart)
+    # drawSineCurve(dart)
 
     #Part B
     setupWindow(wn)
     setupAxis(dart)
     dart.speed(0)
-    drawSineCurve(dart,-360,0)
-    drawCosineCurve(dart)
-    drawTangentCurve(dart)
-    RedLightGreenLight(dart)
+    # drawSineCurve(dart,-360,0)
+    # drawCosineCurve(dart)
+    # drawTangentCurve(dart)
+    # RedLightGreenLight(dart)
     wn.exitonclick()
 
 main()
