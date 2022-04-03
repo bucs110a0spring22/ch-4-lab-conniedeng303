@@ -7,9 +7,9 @@ import math
 # then you do not fully understand functions
 # and should review how they work or ask for help
 
-def drawSineCurve(dart=None):
+def drawSineCurve(dart=None,startofgraph_x=0,startofgraph_y=0):
   dart.penup()
-  dart.goto(-360,0)
+  dart.goto(startofgraph_x,startofgraph_y=0)
   dart.pendown()
   for x in range (-360,361):
     y=math.sin(math.radians(x))
@@ -33,7 +33,7 @@ def drawTangentCurve(dart=None):
 
 def setupWindow(wn=None):
   wn.setworldcoordinates(-360,-1,360,1)
-  wn.bgcolor("blue")
+  wn.bgcolor("green")
 
 def setupAxis(dart=None):
     dart.goto(0,0)
@@ -49,6 +49,35 @@ def setupAxis(dart=None):
     dart.right(90)
     dart.forward(1)
 
+
+#Additional Functions:
+  # -inverse graphs
+#Parameters:
+  #
+#Return a Value:
+  
+
+  
+#FEATURES
+#4 quadrants, change color, if turtle ends up on the right color then it traces a heart  
+
+def RedLightGreenLight(dart=None):
+  question = str(input("Start game? Type Yes or No?"))
+  if question == "yes":
+    dart.clear()
+    x_value = int(input("Pick your x value"))
+    y_value = int(input("Pick your x value"))
+    dart.goto(x_value,y_value)
+    
+    
+    
+    print("Done")
+  else:
+    quit()
+
+
+    
+
 ##########  Do Not Alter Any Code Past Here ########
 def main():
     #Part A
@@ -62,9 +91,10 @@ def main():
     setupWindow(wn)
     setupAxis(dart)
     dart.speed(0)
-    drawSineCurve(dart)
+    drawSineCurve(dart,-360,0)
     drawCosineCurve(dart)
     drawTangentCurve(dart)
+    RedLightGreenLight(dart)
     wn.exitonclick()
 
 main()
