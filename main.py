@@ -1,6 +1,6 @@
 import turtle
 import math
-
+from mpmath import csc, radians
 ########### Your Code here ##############
 # You should only have functions here
 # If you have anything outside of a function, 
@@ -31,36 +31,29 @@ def drawTangentCurve(dart=None):
     y=math.tan(math.radians(x))
     dart.goto(x,y)
 
+def drawCSCCurve(dart=None):
+  dart.penup()
+  dart.goto(-360,0)
+  dart.pendown()
+  for x in range(-360,361):
+    if (x==0):
+      continue
+    y=csc(math.radians(x))
+    dart.goto(x,y)   
+
 def setupWindow(wn=None):
-  wn.setworldcoordinates(-360,-1,360,1)
+  wn.setworldcoordinates(-360,-5,360,5)
   wn.bgcolor("green")
 
 def setupAxis(dart=None):
   dart.setheading(90)
-  for i in range(4):
+  for i in range(3):
     dart.goto(0,0)
     dart.pendown()
     dart.forward(360)
-    dart.right(180)
-    dart.goto(0,0)
-    dart.forward(1)
     dart.right(90)
-
-
-    # dart.right(180)
-    # dart.goto(0,0)
-    # dart.pendown()
-    # dart.forward(360)
-    # dart.goto(0,0)
-    # dart.right(90)
-    # dart.forward(1)
-    # dart.goto(0,0)
-    # dart.right(90)
-    # dart.forward(360)
-    # dart.goto(0,0)
-    # dart.right(90)
-    # dart.forward(1)
-
+    dart.goto(0,0)
+    dart.forward(360)
 
 #Additional Functions:
   # -inverse graphs
@@ -82,6 +75,7 @@ def setupAxis(dart=None):
 #     dart.goto(x_value,y_value)
 #     orange_x_value = random.uniform(-1,1)
 
+
 #     if 
     
 #     print("Done")
@@ -89,8 +83,7 @@ def setupAxis(dart=None):
 #     quit()
 
 
-    
-
+  
 ##########  Do Not Alter Any Code Past Here ########
 def main():
     #Part A
@@ -100,15 +93,20 @@ def main():
     # orange = turtle.Turtle()
     # orange = speed(0)
     dart.speed(0)
-    # drawSineCurve(dart)
+    drawSineCurve(dart)
 
     #Part B
     setupWindow(wn)
     setupAxis(dart)
     dart.speed(0)
-    # drawSineCurve(dart,-360,0)
-    # drawCosineCurve(dart)
-    # drawTangentCurve(dart)
+    drawSineCurve(dart,-360,0)
+    drawCosineCurve(dart)
+    drawTangentCurve(dart)
+    dart.clear()
+    print("Recip Time...")
+
+    setupAxis(dart)
+    drawCSCCurve(dart)
     # RedLightGreenLight(dart)
     wn.exitonclick()
 
