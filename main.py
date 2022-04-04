@@ -1,6 +1,8 @@
 import turtle
 import math
 from mpmath import csc
+import random
+
 ########### Your Code here ##############
 # You should only have functions here
 # If you have anything outside of a function, 
@@ -34,7 +36,9 @@ def drawTangentCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0)
     y=math.tan(math.radians(x))
     dart.goto(x,y)
 
+#Additional Function:
 def drawCSCCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
+  setupAxis(dart)
   startendpoints_csc = (-360,0)
   dart.penup()
   dart.goto(startendpoints_csc)
@@ -59,6 +63,7 @@ def setupAxis(dart=None):
     dart.goto(0,0)
     dart.forward(360)
 
+#Return Functions:
 def ReturnSinFunctionValue():
   x = int(input("type a number between -360 to 360"))
   y = math.sin(math.radians(x))
@@ -70,67 +75,78 @@ def ReturnCSCFunctionValue():
   return y_csc
 
 #Parameters:
-  #   
+def graphswithperiods(dart=None,period=0,yaxis=0,startofgraph_begrange=0, startofgraph_endrange=0):
+  for x in range(startofgraph_begrange,startofgraph_endrange):
+    y=period*(math.sin(math.radians(x)))+yaxis
+    dart.goto(x,y)
 
-  
-#FEATURES
-#4 quadrants, change color, if turtle ends up on the right color then it traces a heart  
-
-
-# def RedLightGreenLight(dart=None,orange=None):
-#   question = str(input("Pick quadrant, and make sure that it isn't touching Start game? Type Yes or No?"))
-#   if question == "yes":
-#     dart.clear()
-#     x_value = int(input("Pick your x value"))
-#     y_value = int(input("Pick your x value"))
-#     dart.goto(x_value,y_value)
-#     orange_x_value = random.uniform(-360,360)
-#     orange_y_value = random.uniform(-1,1)
-#     for i in range(100):
-      
-
-#     if orange_x_value < 0 and 
-#       print("Congrats! Here is a heart for your troubles!")
-
-#     else:
-#       print("L")
-      
+def catchooses():
+  x = int(random.randrange(1,3))
+  if x == 1:
+    print("Cat has chosen the left side")
+    return True
+  else:
+    print("Cat has chosen the right side")
+    return False
     
-#     print("Done")
-#   else:
-#     quit()
+def RedLightGreenLight(dart=None):
+  dart.shape("turtle")
+  dart.goto(0,0)
+  question = str(input("Let's play a game of cat and mouse. Pick either the left or right side of the graph. A cat will only stomp on one side, so you have a 50/50 chance of surviving. Start game? Type yes or no."))
+  if question == "yes":
+    dart.clear
+    direction = str(input("Pick left or right."))
+    x = catchooses()
+    if direction == "left" and x == False:
+      dart.goto(150,150)
+      dart.color("red")
+      print("You made it out alive!")
+    elif direction == "left" and x == True:
+      dart.goto(150,-150)
+      dart.color("blue")
+      print("Nope! You died!")
+    elif direction == "right" and x == True:
+      dart.goto(-150,-150)
+      dart.color("red")
+      print("You made it out alive!")
+    elif direction == "right" and x == True:
+      dart.goto(-150,150)
+      print("Nope! You died!")
+    print("Done")
+  else:
+    quit()
 
-
-  
-##########  Do Not Alter Any Code Past Here ########
 def main():
-    #Part A
+
     wn = turtle.Screen()
     wn.tracer(5)
     dart = turtle.Turtle()
-    orange = turtle.Turtle()
-    orange.speed(0)
     dart.speed(0)
-  
-    # Part B
-    setupWindow(wn)
-    setupAxis(dart)
-    dart.speed(0)
-    drawSineCurve(dart,-360,360)
-    drawCosineCurve(dart,-360,360)
-    drawTangentCurve(dart,-360,360)
-    dart.clear()
 
-    #Return Functions
-    result_sin = ReturnSinFunctionValue()
-    result_csc = ReturnCSCFunctionValue()
-    print("The value you have selected for your x value in a SIN graph is equal to",result_sin)
-    print("The value you have selected for your x value in a CSC graph is equal to",result_csc)
+    # setupWindow(wn)
+    # setupAxis(dart)
+    # dart.speed(0)
+    # drawSineCurve(dart,-360,360)
+    # drawCosineCurve(dart,-360,360)
+    # drawTangentCurve(dart,-360,360)
+    # dart.clear()
+
+    # #Return Functions
+    # result_sin = ReturnSinFunctionValue()
+    # result_csc = ReturnCSCFunctionValue()
+    # print("The value you have selected for your x value in a SIN graph is equal to",result_sin)
+    # print("The value you have selected for your x value in a CSC graph is equal to",result_csc)
+
+    # #Additional Function
+    # print("Let's Draw the Recipocal of Sin and Shift the Graph...")
+    # drawCSCCurve(dart,-360,360)
+
+    # #Parameter Function
+    # graphswithperiods(dart,10,2,-360,360)
+    # dart.clear()
   
-    print("Recip Time...")
-    setupAxis(dart)
-    drawCSCCurve(dart,360,360)
-    # RedLightGreenLight(dart)
+    #Feature
+    RedLightGreenLight(dart)
     wn.exitonclick()
 
 main()
