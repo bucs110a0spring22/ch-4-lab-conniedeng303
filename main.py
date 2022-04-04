@@ -3,12 +3,6 @@ import math
 from mpmath import csc
 import random
 
-########### Your Code here ##############
-# You should only have functions here
-# If you have anything outside of a function, 
-# then you do not fully understand functions
-# and should review how they work or ask for help
-
 def drawSineCurve(dart=None,startofgraph_x=0,endofgraph_y=0):
   startpoints_sin = (-360,0)
   dart.penup()
@@ -24,8 +18,8 @@ def drawCosineCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
   dart.goto(startpoints_cos)
   dart.pendown()
   for x in range (startofgraph_begrange,startofgraph_endrange+1):
-    y=math.cos(math.radians(x))
-    dart.goto(x,y)
+    y_cos_value = math.cos(math.radians(x))
+    dart.goto(x,y_cos_value)
 
 def drawTangentCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
   startendpoints_tan = (-360,0)
@@ -33,7 +27,7 @@ def drawTangentCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0)
   dart.goto(startendpoints_tan)
   dart.pendown()
   for x in range (startofgraph_begrange,startofgraph_endrange+1):
-    y=math.tan(math.radians(x))
+    y_tan_value =math.tan(math.radians(x))
     dart.goto(x,y)
 
 #Additional Function:
@@ -65,24 +59,24 @@ def setupAxis(dart=None):
 
 #Return Functions:
 def ReturnSinFunctionValue():
-  x = int(input("type a number between -360 to 360"))
-  y = math.sin(math.radians(x))
-  return y
+  x_sin = int(input("type a number between -360 to 360"))
+  y_sin_value = math.sin(math.radians(x_sin))
+  return y_sin_value
 
 def ReturnCSCFunctionValue():
   x_csc = int(input("type a number between -360 to 360"))
-  y_csc = csc(math.radians(x_csc))
-  return y_csc
+  y_csc_value = csc(math.radians(x_csc))
+  return y_csc_value
 
 #Parameters:
 def graphswithperiods(dart=None,period=0,yaxis=0,startofgraph_begrange=0, startofgraph_endrange=0):
-  for x in range(startofgraph_begrange,startofgraph_endrange):
-    y=period*(math.sin(math.radians(x)))+yaxis
-    dart.goto(x,y)
+  for x_period in range(startofgraph_begrange,startofgraph_endrange):
+    y_period = period*(math.sin(math.radians(x_period)))+yaxis
+    dart.goto(x_period,y_period)
 
 def catchooses():
-  x = int(random.randrange(1,3))
-  if x == 1:
+  cat_random = int(random.randrange(1,3))
+  if cat_random == 1:
     print("Cat has chosen the left side")
     return True
   else:
@@ -96,20 +90,20 @@ def RedLightGreenLight(dart=None):
   if question == "yes":
     dart.clear
     direction = str(input("Pick left or right."))
-    x = catchooses()
-    if direction == "left" and x == False:
+    catstomp = catchooses()
+    if direction == "left" and catstomp == False:
       dart.goto(150,150)
       dart.color("red")
       print("You made it out alive!")
-    elif direction == "left" and x == True:
+    elif direction == "left" and catstomp == True:
       dart.goto(150,-150)
       dart.color("blue")
       print("Nope! You died!")
-    elif direction == "right" and x == True:
+    elif direction == "right" and catstomp == True:
       dart.goto(-150,-150)
       dart.color("red")
       print("You made it out alive!")
-    elif direction == "right" and x == True:
+    elif direction == "right" and catstomp == True:
       dart.goto(-150,150)
       print("Nope! You died!")
     print("Done")
@@ -117,15 +111,14 @@ def RedLightGreenLight(dart=None):
     quit()
 
 def main():
-
     wn = turtle.Screen()
     wn.tracer(5)
     dart = turtle.Turtle()
     dart.speed(0)
 
-    # setupWindow(wn)
-    # setupAxis(dart)
-    # dart.speed(0)
+    setupWindow(wn)
+    setupAxis(dart)
+    dart.speed(0)
     # drawSineCurve(dart,-360,360)
     # drawCosineCurve(dart,-360,360)
     # drawTangentCurve(dart,-360,360)
