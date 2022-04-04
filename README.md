@@ -8,7 +8,21 @@
 _Replace anything surrounded by the `< >` symbols._
 
 ## SUMMARY:
- < First I built functions that graphed sin,cos, and tan from degree -360 to 360. Then I built another function that drew the x and y axis. Finally, I built the window function, which set the background color and resized the graph.>
+ < 
+
+To align my code with conventions, I saved every stray number to a variable. For example, for my 
+
+
+
+ In terms of updating my code, I updated my SetupAxis function where I created a loop that creates my axis (I also made it shorter than 12 lines of code, a guideline mentioned in the grading guidelines) instead of hardcoding every directional instruction for my turtle.
+ 
+ To start off adding an additional function, I wanted to see if I could graph the recipocal of sin, or csc. To do that, I had to import mpmath to use its csc function to graph it. I also decided to fully change the coordinates by doing "wn.setworldcoordinates(-360,-5,360,5)", which zooms out enough where I can see both the trig function graphs AND the csc graph.
+
+ 
+ 
+ 
+ 
+ First I built functions that graphed sin,cos, and tan from degree -360 to 360. Then I built another function that drew the x and y axis. Finally, I built the window function, which set the background color and resized the graph.>
 
 ## GRACE DAYS
 Grace days used for this assignment: < 0 >
