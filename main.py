@@ -8,7 +8,7 @@ from mpmath import csc
 # and should review how they work or ask for help
 
 def drawSineCurve(dart=None,startofgraph_x=0,endofgraph_y=0):
-  startpoints_sin = (-360,1)
+  startpoints_sin = (-360,0)
   dart.penup()
   dart.goto(startpoints_sin)
   dart.pendown()
@@ -59,27 +59,19 @@ def setupAxis(dart=None):
     dart.goto(0,0)
     dart.forward(360)
 
-
-
 #Parameters:
-  #
-
-    
+  #   
 #Return a Value:
 
-def returnCOSfunction(startofgraph_begrange=0,startofgraph_endrange=0): #does graph go through origin?
-  for x in range(startofgraph_begrange,startofgraph_endrange+1):
-    y=math.cos(math.radians(x))
-    if x == 0 and y == 0:
-      return True
-    else:
-      return False
-
+# def ReturnSinFunctionValue(x=0,y=0):
+#   x = int(input("type a number between -360 to 360")
+#   y = math.tan(math.radians(x))
+#   return y
+  
   
 #FEATURES
 #4 quadrants, change color, if turtle ends up on the right color then it traces a heart  
 
-    
 
 # def RedLightGreenLight(dart=None,orange=None):
 #   question = str(input("Pick quadrant, and make sure that it isn't touching Start game? Type Yes or No?"))
@@ -112,8 +104,8 @@ def main():
     wn = turtle.Screen()
     wn.tracer(5)
     dart = turtle.Turtle()
-    # orange = turtle.Turtle()
-    # orange = speed(0)
+    orange = turtle.Turtle()
+    orange = speed(0)
     dart.speed(0)
     drawSineCurve(dart)
 
@@ -128,8 +120,8 @@ def main():
     # print("Recip Time...")
     # setupAxis(dart)
     # drawCSCCurve(dart)
-    returnCOSfunction(startofgraph_begrange=-360,startofgraph_endrange=360)
     # RedLightGreenLight(dart)
-    wn.exitonclick()
+    # returnCOSfunction(-360,360)
+    # wn.exitonclick()
 
 main()
