@@ -1,39 +1,27 @@
-#### CS 110
-# Chapter 4 - Lab - Functions
 
-### [Assignment Description](https://docs.google.com/document/d/1V20D_upUX4MO8YmskKlRB25Yu2pCEv3-h8z4EAfrSno/edit?usp=sharing)
-
-***
-
-_Replace anything surrounded by the `< >` symbols._
 
 ## SUMMARY:
- < 
+What did you clean up?:
 
-To align my code with conventions, I saved every stray number to a variable. For example, for my 
+To align my code with conventions, I saved every stray number to a variable. For example, the 
+By doing this, I am also able to tweak parameters to change how the graph would look,such as only graphing SIN from one specifc degree to another degree.
 
-
-
- In terms of updating my code, I updated my SetupAxis function where I created a loop that creates my axis (I also made it shorter than 12 lines of code, a guideline mentioned in the grading guidelines) instead of hardcoding every directional instruction for my turtle.
+In terms of updating my code, I updated my SetupAxis function where I created a loop that creates my axis (I also made it shorter than 12 lines of code, a guideline mentioned in the grading guidelines) instead of hardcoding every directional instruction for my turtle.
  
- To start off adding an additional function, I wanted to see if I could graph the recipocal of sin, or csc. To do that, I had to import mpmath to use its csc function to graph it. I also decided to fully change the coordinates by doing "wn.setworldcoordinates(-360,-5,360,5)", which zooms out enough where I can see both the trig function graphs AND the csc graph.
 
- 
- 
- 
- 
- First I built functions that graphed sin,cos, and tan from degree -360 to 360. Then I built another function that drew the x and y axis. Finally, I built the window function, which set the background color and resized the graph.>
+        Summary of function(s) added:
 
-## GRACE DAYS
-Grace days used for this assignment: < 0 >
+To start off adding an additional function, I wanted to see if I could graph the recipocal of sin, or csc. To do that, I had to import mpmath to use its csc function to graph it. I also decided to fully change the coordinates by doing "wn.setworldcoordinates(-360,-5,360,5)", which zooms out enough where I can see both the trig function graphs AND the csc graph.
 
-Grace days remaining: < 5 >/5
+ For my return functions, I wanted to see the difference in values between my Sin and Csc values (csc is the recipocal of sin), so I created functions that would return the y values of user inputs 
+
+Summary of Feature Added:
 
 ## KNOWN BUGS AND INCOMPLETE PARTS:
- < None. >
+ < What parts of the project you were not able to complete >
 
 ## REFERENCES:
-  I used this youtube video to figure out how the sin graphed worked. (https://www.youtube.com/watch?v=IX-V58JNdrI) 
+ < List any outside resources used >
 
 ## MISCELLANEOUS COMMENTS:
- < None. >
+ < Anything you would like the grader to know >

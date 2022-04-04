@@ -25,21 +25,21 @@ def drawCosineCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
     y=math.cos(math.radians(x))
     dart.goto(x,y)
 
-def drawTangentCurve(dart=None):
+def drawTangentCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
   startendpoints_tan = (-360,0)
   dart.penup()
   dart.goto(startendpoints_tan)
   dart.pendown()
-  for x in range (-360,361):
+  for x in range (startofgraph_begrange,startofgraph_endrange+1):
     y=math.tan(math.radians(x))
     dart.goto(x,y)
 
-def drawCSCCurve(dart=None):
+def drawCSCCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
   startendpoints_csc = (-360,0)
   dart.penup()
   dart.goto(startendpoints_csc)
   dart.pendown()
-  for x in range(-360,361):
+  for x in range(startofgraph_begrange,startofgraph_endrange+1):
     if (x==0):
       continue
     y=csc(math.radians(x))
@@ -59,15 +59,19 @@ def setupAxis(dart=None):
     dart.goto(0,0)
     dart.forward(360)
 
+def ReturnSinFunctionValue():
+  x = int(input("type a number between -360 to 360"))
+  y = math.sin(math.radians(x))
+  return y
+
+def ReturnCSCFunctionValue():
+  x_csc = int(input("type a number between -360 to 360"))
+  y_csc = csc(math.radians(x_csc))
+  return y_csc
+
 #Parameters:
   #   
-#Return a Value:
 
-# def ReturnSinFunctionValue(x=0,y=0):
-#   x = int(input("type a number between -360 to 360")
-#   y = math.tan(math.radians(x))
-#   return y
-  
   
 #FEATURES
 #4 quadrants, change color, if turtle ends up on the right color then it traces a heart  
@@ -105,23 +109,28 @@ def main():
     wn.tracer(5)
     dart = turtle.Turtle()
     orange = turtle.Turtle()
-    orange = speed(0)
+    orange.speed(0)
     dart.speed(0)
-    drawSineCurve(dart)
+  
+    # Part B
+    setupWindow(wn)
+    setupAxis(dart)
+    dart.speed(0)
+    drawSineCurve(dart,-360,360)
+    drawCosineCurve(dart,-360,360)
+    drawTangentCurve(dart,-360,360)
+    dart.clear()
 
-    #Part B
-    # setupWindow(wn)
-    # setupAxis(dart)
-    # dart.speed(0)
-    # drawSineCurve(dart,-360,360)
-    # drawCosineCurve(dart,-360,360)
-    # drawTangentCurve(dart)
-    # dart.clear()
-    # print("Recip Time...")
-    # setupAxis(dart)
-    # drawCSCCurve(dart)
+    #Return Functions
+    result_sin = ReturnSinFunctionValue()
+    result_csc = ReturnCSCFunctionValue()
+    print("The value you have selected for your x value in a SIN graph is equal to",result_sin)
+    print("The value you have selected for your x value in a CSC graph is equal to",result_csc)
+  
+    print("Recip Time...")
+    setupAxis(dart)
+    drawCSCCurve(dart,360,360)
     # RedLightGreenLight(dart)
-    # returnCOSfunction(-360,360)
-    # wn.exitonclick()
+    wn.exitonclick()
 
 main()
