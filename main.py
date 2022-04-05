@@ -118,19 +118,15 @@ def CatandMouse(dart=None):
     direction = str(input("Pick left or right."))
     catstomp = catchooses()
     if direction == "left" and catstomp == False:
-      dart.goto(300,300)
       print("You made it out alive!")
       rectangle_right(dart)
     elif direction == "left" and catstomp == True:
-      dart.goto(300,300)
       print("Nope, you got squashed!But you are still alive!")
       rectangle_left(dart)
     elif direction == "right" and catstomp == True:
-      dart.goto(300,300)
       print("You made it out alive!")
       rectangle_left(dart)
-    elif direction == "left" and catstomp == True:
-      dart.goto(300,300)
+    elif direction == "right" and catstomp == False:
       print("Nope, you got squashed!But you are still alive!")
       rectangle_right(dart)
     print("Done")
