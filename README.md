@@ -17,7 +17,7 @@ To start off adding an additional function, I wanted to see if I could graph the
  For my parameter functions, I wanted to create a function that would be able to adjust the period and y-axis of my sin graph. To do this, I looked up the equation that would shift the sin graph, and adjusted my parameters to fit in the equation. The new parameters that i created were period and y-axis, which I could input values to change how the sin graph looked.
 
 Summary of Feature Added:
-For my function, I created a game of cat and mouse, 
+For my function, I created a game of cat and mouse, where I 
 I created a function called catchooses which chooses the side that the cat decided
 
 ## KNOWN BUGS AND INCOMPLETE PARTS:

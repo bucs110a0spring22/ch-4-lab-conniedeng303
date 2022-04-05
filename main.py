@@ -83,7 +83,7 @@ def catchooses():
     print("Cat has chosen the right side")
     return False
 
-def draw_rectangle_left(dart=None):
+def rectangle_left(dart=None):
   dart.begin_fill()
   dart.turtlesize(2)
   dart.goto(0,-5)
@@ -95,7 +95,7 @@ def draw_rectangle_left(dart=None):
     dart.left(90)
   dart.end_fill()
 
-def draw_rectangle_right(dart=None):
+def rectangle_right(dart=None):
   dart.begin_fill()
   dart.turtlesize(2)
   dart.goto(0,-5)
@@ -106,7 +106,6 @@ def draw_rectangle_right(dart=None):
     dart.forward(360)
     dart.right(90)
   dart.end_fill()
-
 
 def CatandMouse(dart=None):
   setupAxis(dart)
@@ -115,27 +114,59 @@ def CatandMouse(dart=None):
   dart.goto(300,300)
   question = str(input("Let's play a game of cat and mouse. Pick either the left or right side of the graph. A cat will only stomp on one side, so you have a 50/50 chance of surviving. Start game? Type yes or no."))
   if question == "yes":
-    dart.clear
+    dart.clear()
     direction = str(input("Pick left or right."))
     catstomp = catchooses()
     if direction == "left" and catstomp == False:
       dart.goto(300,300)
       print("You made it out alive!")
-      
+      rectangle_right(dart)
     elif direction == "left" and catstomp == True:
       dart.goto(300,300)
       print("Nope! You died!")
-      draw_rectangle_left()
-    elif direction == "right" and catstomp == False:
-      dart.goto(300,300)
-      print("Nope! You died!")
-      draw_rectangle_right()
+      rectangle_left(dart)
     elif direction == "right" and catstomp == True:
       dart.goto(300,300)
       print("You made it out alive!")
+      rectangle_left(dart)
+    elif direction == "left" and catstomp == True:
+      dart.goto(300,300)
+      print("Nope! You died!")
+      rectangle_right(dart)
     print("Done")
   else:
     quit()
+
+def toxicfood(dart=None):
+  dart.clear()
+  dart.goto(0,0)
+  food_random = int(random.randrange(1,3))
+  if food_random == 1:
+    dart.fillcolor('purple')
+    dart.begin_fill()
+    dart.circle(60)
+    dart.end_fill()
+    return False
+  else:
+    dart.fillcolor('orange')
+    dart.begin_fill()
+    dart.circle(60)
+    dart.end_fill()
+    return True
+
+def StoryLine(dart=None):
+  dart.clear()
+  print("The cat exclaims,""For surviving my wrath, I'll allow you to eat a single orange.""The cat presents you with an orange.Are oranges supposed to be that color?")
+  answer = str(input("Do you eat this orange? yes or no?"))
+  if toxicfood(dart) == True and answer == "yes":
+    print("Hazzah! The cat was a true ally all along.")
+  elif toxicfood(dart) == True and answer == "no":
+    print("The cat feels hurt. That orange wasn't poisoned.")
+  elif toxicfood(dart) == False and answer == "no":
+    print("You dodged a bullet. That orange was packed with poison.")
+  else:
+    print("Oranges are not that color. You have been betrayed by the most obvious enemy.")
+  
 
 def main():
   wn = turtle.Screen()
@@ -146,28 +177,28 @@ def main():
   setupWindow(wn)
   setupAxis(dart)
   dart.speed(0)
-  wn.exitonclick()
   drawSineCurve(dart,-360,360)
   drawCosineCurve(dart,-360,360)
   drawTangentCurve(dart,-360,360)
   dart.clear()
   
   # #Return Functions
-  # result_sin = ReturnSinFunctionValue()
-  # result_csc = ReturnCSCFunctionValue()
-  # print("The value you have selected for your x value in a SIN graph is equal to",result_sin)
-  # print("The value you have selected for your x value in a CSC graph is equal to",result_csc)
+  result_sin = ReturnSinFunctionValue()
+  result_csc = ReturnCSCFunctionValue()
+  print("The value you have selected for your x value in a SIN graph is equal to",result_sin)
+  print("The value you have selected for your x value in a CSC graph is equal to",result_csc)
   
   # #Additional Function
-  # print("Let's Draw the Recipocal of Sin and Shift the Graph...")
-  # drawCSCCurve(dart,-360,360)
+  print("Let's Draw the Recipocal of Sin and Shift the Graph...")
+  drawCSCCurve(dart,-360,360)
   
   # #Parameter Function
-  # graphswithperiods(dart,10,2,-360,360)
-  # dart.clear()
+  graphswithperiods(dart,10,2,-360,360)
+  dart.clear()
   
   #Feature
-  # CatandMouse(dart)
-  # wn.exitonclick()
+  CatandMouse(dart)
+  StoryLine(dart)
+  wn.exitonclick()
 
 main()
