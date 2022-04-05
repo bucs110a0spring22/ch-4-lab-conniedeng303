@@ -135,7 +135,6 @@ def StoryLine(dart=None):
     print("You dodged a bullet. That orange was packed with poison.")
   else:
     print("Oranges are not that color. You have been betrayed by the most obvious enemy.")
-  
 
 def main():
   wn = turtle.Screen()
