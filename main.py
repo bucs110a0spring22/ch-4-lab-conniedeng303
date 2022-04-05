@@ -47,16 +47,15 @@ def setupWindow(wn=None):
   wn.setworldcoordinates(-360,-5,360,5)
   wn.bgcolor("green")
 
-def setupAxis(dart=None,y_length=0,x_length=0):
+def setupAxis(dart=None):
   dart.setheading(90)
   for i in range(4):
-    origin = (0,0)
-    dart.goto(origin)
+    dart.goto(0,0)
     dart.pendown()
-    dart.forward(y_length)
+    dart.forward(1)
     dart.right(90)
-    dart.goto(origin)
-    dart.forward(x_length)
+    dart.goto(0,0)
+    dart.forward(360)
 
 #Return Functions:
 def ReturnSinFunctionValue():
@@ -84,29 +83,29 @@ def catchooses():
     print("Cat has chosen the right side")
     return False
 
-def rectangle_left(dart=None):
-  dart.begin_fill()
-  dart.turtlesize(2)
-  dart.goto(0,-5)
-  dart.color("red")
-  for i in range(3):
-    dart.forward(10)
-    dart.left(90)
-    dart.forward(360)
-    dart.left(90)
-  dart.end_fill()
+# def rectangle_left(dart=None):
+#   dart.begin_fill()
+#   dart.turtlesize(2)
+#   dart.goto(0,-5)
+#   dart.color("red")
+#   for i in range(3):
+#     dart.forward(10)
+#     dart.left(90)
+#     dart.forward(360)
+#     dart.left(90)
+#   dart.end_fill()
 
-def rectangle_right(dart=None):
-  dart.begin_fill()
-  dart.turtlesize(2)
-  dart.goto(0,-5)
-  dart.color("red")
-  for i in range(3):
-    dart.forward(10)
-    dart.right(90)
-    dart.forward(360)
-    dart.right(90)
-  dart.end_fill()
+# def rectangle_right(dart=None):
+#   dart.begin_fill()
+#   dart.turtlesize(2)
+#   dart.goto(0,-5)
+#   dart.color("red")
+#   for i in range(3):
+#     dart.forward(10)
+#     dart.right(90)
+#     dart.forward(360)
+#     dart.right(90)
+#   dart.end_fill()
 
 def CatandMouse(dart=None):
   setupAxis(dart)
@@ -120,17 +119,12 @@ def CatandMouse(dart=None):
     catstomp = catchooses()
     if direction == "left" and catstomp == False:
       print("You made it out alive!")
-      rectangle_right(dart)
     elif direction == "left" and catstomp == True:
       print("Nope, you got squashed!But you are still alive!")
-      rectangle_left(dart)
     elif direction == "right" and catstomp == True:
       print("You made it out alive!")
-      rectangle_left(dart)
     elif direction == "right" and catstomp == False:
       print("Nope, you got squashed!But you are still alive!")
-      rectangle_right(dart)
-    print("Done")
   else:
     quit()
 
@@ -141,7 +135,7 @@ def toxicfood(dart=None):
   food_random = int(random.randrange(1,3))
   dart.pendown()
   if food_random == 1:
-    dart.fillcolor('purple')
+    dart.color("purple")
     dart.begin_fill()
     dart.circle(60)
     dart.end_fill()
@@ -154,14 +148,14 @@ def toxicfood(dart=None):
     return True
 
 def StoryLine(dart=None):
-  dart.clear()
+  toxicfood_var = toxicfood(dart)
   print("The cat exclaims,""For surviving my wrath, I'll allow you to eat a single orange.""The cat presents you with an orange.Are oranges supposed to be that color?")
   answer = str(input("Do you eat this orange? yes or no?"))
-  if toxicfood(dart) == True and answer == "yes":
+  if toxicfood_var == True and answer == "yes":
     print("Hazzah! The cat was a true ally all along.")
-  elif toxicfood(dart) == True and answer == "no":
+  elif toxicfood_var == True and answer == "no":
     print("The cat feels hurt. That orange wasn't poisoned.")
-  elif toxicfood(dart) == False and answer == "no":
+  elif toxicfood_var == False and answer == "no":
     print("You dodged a bullet. That orange was packed with poison.")
   else:
     print("Oranges are not that color. You have been betrayed by the most obvious enemy.")
@@ -174,7 +168,7 @@ def main():
   dart.speed(0)
   
   setupWindow(wn)
-  setupAxis(dart,1,360)
+  setupAxis(dart)
   dart.speed(0)
   drawSineCurve(dart,-360,360)
   drawCosineCurve(dart,-360,360)
@@ -196,6 +190,7 @@ def main():
   dart.clear()
   
   #Feature
+  wn.setworldcoordinates(-360,-360,360,360)
   CatandMouse(dart)
   StoryLine(dart)
   wn.exitonclick()
