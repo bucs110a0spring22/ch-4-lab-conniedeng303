@@ -47,15 +47,16 @@ def setupWindow(wn=None):
   wn.setworldcoordinates(-360,-5,360,5)
   wn.bgcolor("green")
 
-def setupAxis(dart=None):
+def setupAxis(dart=None,y_length=0,x_length=0):
   dart.setheading(90)
   for i in range(4):
-    dart.goto(0,0)
+    origin = (0,0)
+    dart.goto(origin)
     dart.pendown()
-    dart.forward(1)
+    dart.forward(y_length)
     dart.right(90)
-    dart.goto(0,0)
-    dart.forward(360)
+    dart.goto(origin)
+    dart.forward(x_length)
 
 #Return Functions:
 def ReturnSinFunctionValue():
@@ -173,7 +174,7 @@ def main():
   dart.speed(0)
   
   setupWindow(wn)
-  setupAxis(dart)
+  setupAxis(dart,1,360)
   dart.speed(0)
   drawSineCurve(dart,-360,360)
   drawCosineCurve(dart,-360,360)
