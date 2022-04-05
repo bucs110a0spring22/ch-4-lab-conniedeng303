@@ -9,8 +9,8 @@ def drawSineCurve(dart=None,startofgraph_x=0,endofgraph_y=0):
   dart.goto(startpoints_sin)
   dart.pendown()
   for x in range (startofgraph_x,endofgraph_y):
-    y=math.sin(math.radians(x))
-    dart.goto(x,y)
+    y_sin_value = math.sin(math.radians(x))
+    dart.goto(x,y_sin_value)
 
 def drawCosineCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
   startpoints_cos = (-360,1)
@@ -22,13 +22,13 @@ def drawCosineCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
     dart.goto(x,y_cos_value)
 
 def drawTangentCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
-  startendpoints_tan = (-360,0)
+  startpoints_tan = (-360,0)
   dart.penup()
-  dart.goto(startendpoints_tan)
+  dart.goto(startpoints_tan)
   dart.pendown()
   for x in range (startofgraph_begrange,startofgraph_endrange+1):
-    y_tan_value =math.tan(math.radians(x))
-    dart.goto(x,y)
+    y_tan_value = math.tan(math.radians(x))
+    dart.goto(x,y_tan_value)
 
 #Additional Function:
 def drawCSCCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
@@ -40,8 +40,8 @@ def drawCSCCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
   for x in range(startofgraph_begrange,startofgraph_endrange+1):
     if (x==0):
       continue
-    y=csc(math.radians(x))
-    dart.goto(x,y)   
+    y_value_csc = csc(math.radians(x))
+    dart.goto(x,y_value_csc)   
 
 def setupWindow(wn=None):
   wn.setworldcoordinates(-360,-5,360,5)
@@ -70,7 +70,7 @@ def ReturnCSCFunctionValue():
 
 #Parameters:
 def graphswithperiods(dart=None,period=0,yaxis=0,startofgraph_begrange=0, startofgraph_endrange=0):
-  for x_period in range(startofgraph_begrange,startofgraph_endrange):
+  for x_period in range(startofgraph_begrange,startofgraph_endrange+1):
     y_period = period*(math.sin(math.radians(x_period)))+yaxis
     dart.goto(x_period,y_period)
 
@@ -82,64 +82,92 @@ def catchooses():
   else:
     print("Cat has chosen the right side")
     return False
-    
-def RedLightGreenLight(dart=None):
+
+def draw_rectangle_left(dart=None):
+  dart.begin_fill()
+  dart.turtlesize(2)
+  dart.goto(0,-5)
+  dart.color("red")
+  for i in range(3):
+    dart.forward(10)
+    dart.left(90)
+    dart.forward(360)
+    dart.left(90)
+  dart.end_fill()
+
+def draw_rectangle_right(dart=None):
+  dart.begin_fill()
+  dart.turtlesize(2)
+  dart.goto(0,-5)
+  dart.color("red")
+  for i in range(3):
+    dart.forward(10)
+    dart.right(90)
+    dart.forward(360)
+    dart.right(90)
+  dart.end_fill()
+
+
+def CatandMouse(dart=None):
+  setupAxis(dart)
   dart.shape("turtle")
   dart.goto(0,0)
+  dart.goto(300,300)
   question = str(input("Let's play a game of cat and mouse. Pick either the left or right side of the graph. A cat will only stomp on one side, so you have a 50/50 chance of surviving. Start game? Type yes or no."))
   if question == "yes":
     dart.clear
     direction = str(input("Pick left or right."))
     catstomp = catchooses()
     if direction == "left" and catstomp == False:
-      dart.goto(150,150)
-      dart.color("red")
+      dart.goto(300,300)
       print("You made it out alive!")
+      
     elif direction == "left" and catstomp == True:
-      dart.goto(150,-150)
-      dart.color("blue")
+      dart.goto(300,300)
       print("Nope! You died!")
+      draw_rectangle_left()
+    elif direction == "right" and catstomp == False:
+      dart.goto(300,300)
+      print("Nope! You died!")
+      draw_rectangle_right()
     elif direction == "right" and catstomp == True:
-      dart.goto(-150,-150)
-      dart.color("red")
+      dart.goto(300,300)
       print("You made it out alive!")
-    elif direction == "right" and catstomp == True:
-      dart.goto(-150,150)
-      print("Nope! You died!")
     print("Done")
   else:
     quit()
 
 def main():
-    wn = turtle.Screen()
-    wn.tracer(5)
-    dart = turtle.Turtle()
-    dart.speed(0)
-
-    setupWindow(wn)
-    setupAxis(dart)
-    dart.speed(0)
-    # drawSineCurve(dart,-360,360)
-    # drawCosineCurve(dart,-360,360)
-    # drawTangentCurve(dart,-360,360)
-    # dart.clear()
-
-    # #Return Functions
-    # result_sin = ReturnSinFunctionValue()
-    # result_csc = ReturnCSCFunctionValue()
-    # print("The value you have selected for your x value in a SIN graph is equal to",result_sin)
-    # print("The value you have selected for your x value in a CSC graph is equal to",result_csc)
-
-    # #Additional Function
-    # print("Let's Draw the Recipocal of Sin and Shift the Graph...")
-    # drawCSCCurve(dart,-360,360)
-
-    # #Parameter Function
-    # graphswithperiods(dart,10,2,-360,360)
-    # dart.clear()
+  wn = turtle.Screen()
+  wn.tracer(5)
+  dart = turtle.Turtle()
+  dart.speed(0)
   
-    #Feature
-    RedLightGreenLight(dart)
-    wn.exitonclick()
+  setupWindow(wn)
+  setupAxis(dart)
+  dart.speed(0)
+  wn.exitonclick()
+  drawSineCurve(dart,-360,360)
+  drawCosineCurve(dart,-360,360)
+  drawTangentCurve(dart,-360,360)
+  dart.clear()
+  
+  # #Return Functions
+  # result_sin = ReturnSinFunctionValue()
+  # result_csc = ReturnCSCFunctionValue()
+  # print("The value you have selected for your x value in a SIN graph is equal to",result_sin)
+  # print("The value you have selected for your x value in a CSC graph is equal to",result_csc)
+  
+  # #Additional Function
+  # print("Let's Draw the Recipocal of Sin and Shift the Graph...")
+  # drawCSCCurve(dart,-360,360)
+  
+  # #Parameter Function
+  # graphswithperiods(dart,10,2,-360,360)
+  # dart.clear()
+  
+  #Feature
+  # CatandMouse(dart)
+  # wn.exitonclick()
 
 main()
