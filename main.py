@@ -83,30 +83,6 @@ def catchooses():
     print("Cat has chosen the right side")
     return False
 
-# def rectangle_left(dart=None):
-#   dart.begin_fill()
-#   dart.turtlesize(2)
-#   dart.goto(0,-5)
-#   dart.color("red")
-#   for i in range(3):
-#     dart.forward(10)
-#     dart.left(90)
-#     dart.forward(360)
-#     dart.left(90)
-#   dart.end_fill()
-
-# def rectangle_right(dart=None):
-#   dart.begin_fill()
-#   dart.turtlesize(2)
-#   dart.goto(0,-5)
-#   dart.color("red")
-#   for i in range(3):
-#     dart.forward(10)
-#     dart.right(90)
-#     dart.forward(360)
-#     dart.right(90)
-#   dart.end_fill()
-
 def CatandMouse(dart=None):
   setupAxis(dart)
   dart.shape("turtle")
@@ -190,8 +166,8 @@ def main():
   dart.clear()
   
   #Feature
-  wn.setworldcoordinates(-360,-360,360,360)
   CatandMouse(dart)
+  wn.setworldcoordinates(-360,-360,360,360)
   StoryLine(dart)
   wn.exitonclick()
 
