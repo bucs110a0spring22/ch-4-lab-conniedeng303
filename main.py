@@ -123,7 +123,7 @@ def CatandMouse(dart=None):
       rectangle_right(dart)
     elif direction == "left" and catstomp == True:
       dart.goto(300,300)
-      print("Nope! You died!")
+      print("Nope, you got squashed!But you are still alive!")
       rectangle_left(dart)
     elif direction == "right" and catstomp == True:
       dart.goto(300,300)
@@ -131,16 +131,18 @@ def CatandMouse(dart=None):
       rectangle_left(dart)
     elif direction == "left" and catstomp == True:
       dart.goto(300,300)
-      print("Nope! You died!")
+      print("Nope, you got squashed!But you are still alive!")
       rectangle_right(dart)
     print("Done")
   else:
     quit()
 
 def toxicfood(dart=None):
+  dart.penup()
   dart.clear()
   dart.goto(0,0)
   food_random = int(random.randrange(1,3))
+  dart.pendown()
   if food_random == 1:
     dart.fillcolor('purple')
     dart.begin_fill()
