@@ -3,6 +3,11 @@ import math
 from mpmath import csc
 import random
 
+"""
+  description: draw sin curve
+  args: none
+  return: none
+"""
 def drawSineCurve(dart=None,startofgraph_x=0,endofgraph_y=0):
   startpoints_sin = (-360,0)
   dart.penup()
@@ -12,6 +17,11 @@ def drawSineCurve(dart=None,startofgraph_x=0,endofgraph_y=0):
     y_sin_value = math.sin(math.radians(x))
     dart.goto(x,y_sin_value)
 
+"""
+  description: draw cos curve
+  args: none
+  return: none
+"""
 def drawCosineCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
   startpoints_cos = (-360,1)
   dart.penup()
@@ -30,6 +40,11 @@ def drawTangentCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0)
     y_tan_value = math.tan(math.radians(x))
     dart.goto(x,y_tan_value)
 
+"""
+  description: draw csc curve
+  args: dart, startofgraph_begrange, startofgraph_endrange
+  return: none
+"""
 #Additional Function:
 def drawCSCCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
   setupAxis(dart)
@@ -43,9 +58,22 @@ def drawCSCCurve(dart=None,startofgraph_begrange=0, startofgraph_endrange=0):
     y_value_csc = csc(math.radians(x))
     dart.goto(x,y_value_csc)   
 
+
+"""
+  description: sets up window
+  args: wn
+  return: none
+"""
+
 def setupWindow(wn=None):
   wn.setworldcoordinates(-360,-5,360,5)
   wn.bgcolor("green")
+
+"""
+  description: sets up axis
+  args: none
+  return: none
+"""
 
 def setupAxis(dart=None):
   dart.setheading(90)
@@ -57,23 +85,44 @@ def setupAxis(dart=None):
     dart.goto(0,0)
     dart.forward(360)
 
+"""
+  description: returns y values for sin curve
+  args: none
+  return: y_sin_value
+"""
+
 #Return Functions:
 def ReturnSinFunctionValue():
   x_sin = int(input("type a number between -360 to 360"))
   y_sin_value = math.sin(math.radians(x_sin))
   return y_sin_value
 
+"""
+  description: returns y values for csc curve
+  args: none
+  return: y_csc_value
+"""
+
 def ReturnCSCFunctionValue():
   x_csc = int(input("type a number between -360 to 360"))
   y_csc_value = csc(math.radians(x_csc))
   return y_csc_value
 
+  """
+  description: graphs sin graph with period
+  args: dart,period,yaxis,startofgraph_begrange,startofgraph_endrange
+  return: none
+"""
 #Parameters:
 def graphswithperiods(dart=None,period=0,yaxis=0,startofgraph_begrange=0, startofgraph_endrange=0):
   for x_period in range(startofgraph_begrange,startofgraph_endrange+1):
     y_period = period*(math.sin(math.radians(x_period)))+yaxis
     dart.goto(x_period,y_period)
-
+"""
+  description: choses where cat will land
+  args: none
+  return: True, False
+"""
 def catchooses():
   cat_random = int(random.randrange(1,3))
   if cat_random == 1:
@@ -83,6 +132,11 @@ def catchooses():
     print("Cat has chosen the right side")
     return False
 
+"""
+  description: this function determines if cat stomps on user
+  args: dart
+  return: none
+"""
 def CatandMouse(dart=None):
   setupAxis(dart)
   dart.shape("turtle")
@@ -104,6 +158,11 @@ def CatandMouse(dart=None):
   else:
     quit()
 
+"""
+  description: function draws orange, and determines the random color of it 
+  args: none
+  return: True False
+"""
 def toxicfood(dart=None):
   dart.penup()
   dart.clear()
@@ -123,6 +182,11 @@ def toxicfood(dart=None):
     dart.end_fill()
     return True
 
+"""
+  description: function takes input from user (eat or not to eat), and says if orange is actually poisonious.
+  args: dart
+  return: none
+"""
 def StoryLine(dart=None):
   toxicfood_var = toxicfood(dart)
   print("The cat exclaims,""For surviving my wrath, I'll allow you to eat a single orange.""The cat presents you with an orange.Are oranges supposed to be that color?")
