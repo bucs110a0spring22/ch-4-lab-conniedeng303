@@ -1,9 +1,0 @@
-# def returnCOSfunction(startofgraph_begrange=0,startofgraph_endrange=0): #does graph go through origin?
-#   for x in range(startofgraph_begrange,startofgraph_endrange+1):
-#     y=math.sin(math.radians(x))
-#     if x == 0 and y == 0:
-#       print("True")
-#       return True
-#     else:
-#       print("False")
-#       return False
